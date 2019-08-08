@@ -113,24 +113,6 @@ function unmute() {
   QUIT=1
 }
 
-function run() {
-  echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-  echo "  | \ /   Muted and ready for capture"
-  echo "  \ O.o"
-  echo "   ( _ )\ "
-  echo "   '' ''¿ "
-  echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-  echo "Ctrl-C to unmute and exit"
-  while [ $QUIT -eq 0 ]; do
-    if [[ -z $(ifconfig|grep 'HWaddr 00:13:37'|cut -d ' ' -f1) ]];then
-      echo "Plunder bug removed/missing, unmuting and exiting..."
-      cleanup
-      QUIT=1
-    fi
-    sleep 1
-  done
-}
-
 function cleanup() {
           echo -e "\n[!] Cleaning up..."
           unmute
@@ -175,5 +157,4 @@ fi
 
 # Wait for bug to be unplugged/ctrl-c - cleanup and exit
 trap cleanup INT
-run
 micdrop 0
