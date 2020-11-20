@@ -2,8 +2,8 @@
 
 error_reporting(0);
 
-$ip = $_GET["ip"];
-$port = $_GET["port"];
+$ip = $_POST["ip"];
+$port = $_POST["port"];
 
 $ipf = AF_INET;
 
